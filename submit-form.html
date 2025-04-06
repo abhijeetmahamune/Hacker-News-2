@@ -4,7 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submit</title>
-
+    <script>
+        function confirmSubmission(event) {
+          event.preventDefault(); // prevent actual form submission for now
+          // You can process or validate form data here if needed
+      
+          // Show confirmation
+          if (confirm("Are you sure you want to submit this post?")) {
+            alert("Your post has been submitted successfully!");
+            // If using actual backend submission, you can submit the form programmatically
+            event.target.submit();
+          } else {
+            alert("Submission cancelled.");
+          }
+      
+          return false; // prevent default submission until user confirms
+        }
+      </script>
     <style>
         body{
             background-image: url("back.png");
@@ -91,7 +107,7 @@ button:hover{
 <body>
     <section class="form-section">
         <h2 class="form-heading">Submit a News Article</h2>
-        <form class="news-form">
+        <form class="news-form" onsubmit="return confirmSubmission(event)">
           <label for="title">Title</label>
           <input type="text" id="title" name="title" placeholder="Enter article title" required />
       
